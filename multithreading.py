@@ -29,7 +29,6 @@ URLS = [
        'https://zooqle.com/',    
        ]
 
-
 #建立队列；在使用多线程时，必须配合其队列一起使用。
 def worker(work_queue):
     while not work_queue.empty():
