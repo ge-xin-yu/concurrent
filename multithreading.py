@@ -52,7 +52,7 @@ def main():
     #当然也可以使用for循环堵塞，但缺点是无法释放url列表所占内存。
     while threads:
     #此处pop方法承担了两个功能，在返回一个线程对象的同时，删除此对象；此方法极有用。
-    threads.pop().join()   
+       threads.pop().join()   
  
 #测试脚本
 if __name__ == '__main__':
