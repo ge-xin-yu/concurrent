@@ -38,7 +38,7 @@ def worker(url):
         print('\tFailed!')
 
 def main():     
-    with Pool(10) as pool:
+    with Pool(PROCESS_POOL_SIZE) as pool:
         pool.map(worker, URLS)    
  
 #测试脚本
