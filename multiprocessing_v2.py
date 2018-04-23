@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-多进程测试
+多进程测试版本二，使用Pool模块。此方法支持map函数，因此URLS无需使用队列。
+直接作为map的参数即可。且由于pool支持with语法，进程start及join也就不必要了。
 """
 
 import requests
@@ -46,33 +47,4 @@ if __name__ == '__main__':
     main()
     end = time()
     print('进程数：{}个\n总耗时：{:.2f} 秒'.format(PROCESS_POOL_SIZE,end-start))
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
