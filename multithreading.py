@@ -42,6 +42,8 @@ def get_html_text(url):
         
 def worker(work_queue):
     while not work_queue.empty():
+       #当队列非空，但已没有任务可用之时，worker应退出。
+       #因此需加判断。此时get方法将返回Empty异常。
        try:
            url = work_queue.get(block=False)      
        except Empty():
