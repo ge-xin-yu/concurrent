@@ -9,19 +9,18 @@ from multiprocessing import Pool
 from time import time
 
 
-URLS = [
-       'https://www.baidu.com',
-       'https://download.csdn.net/',
-       'https://mp.weixin.qq.com/',
-       'http://www.wps.cn/product/beta/',
-       'https://www.etymonline.com/',
-       'http://docs.python-requests.org/en/master/',
-       'https://www.zhihu.com',
-       'http://bbs.pinggu.org/',
-       'http://www.tianya.cn/',
-       'https://coderprog.com/',
-       'https://zooqle.com/',    
-       ]
+URLS = ['https://www.baidu.com',
+        'https://download.csdn.net/',
+        'https://mp.weixin.qq.com/',
+        'http://www.wps.cn/product/beta/',
+        'https://www.etymonline.com/',
+        'http://docs.python-requests.org/en/master/',
+        'https://www.zhihu.com',
+        'http://bbs.pinggu.org/',
+        'http://www.tianya.cn/',
+        'https://coderprog.com/',
+        'https://zooqle.com/']
+
 
 HEADER = {'User-Agent': 'Mozilla/5.0'}
 #自定义全局进程数
