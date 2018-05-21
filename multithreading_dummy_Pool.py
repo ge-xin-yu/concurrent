@@ -29,7 +29,7 @@ URLS = ['https://www.baidu.com',
 
 HEADER = {'User-Agent': 'Mozilla/5.0'}
 #自定义全局进程数
-PROCESS_POOL_SIZE = 10
+POOL_SIZE = 10
 
 def worker(url):
     print('{:50}'.format(url), end='')
@@ -42,7 +42,7 @@ def worker(url):
               
 
 def main():     
-    with Pool(PROCESS_POOL_SIZE) as pool:
+    with Pool(POOL_SIZE) as pool:
         pool.map(worker, URLS)   
               
  
@@ -51,5 +51,5 @@ if __name__ == '__main__':
     start = time()
     main()
     end = time()
-    print('线程数：{}个\n总耗时：{:.2f} 秒'.format(PROCESS_POOL_SIZE,end-start))
+    print('线程数：{}个\n总耗时：{:.2f} 秒'.format(POOL_SIZE,end-start))
 
