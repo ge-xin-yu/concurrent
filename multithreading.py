@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-多线程测试
+多线程测试版本一
+
+使用多线程中的Thread模块，此模块需要考虑配置队列，因此代码量稍大。实际编程中可以使用多
+进程中的dummy模块。
 """
 
 from queue import Queue, Empty
 from threading import Thread
-#from multiprocessing import Process, Pool
-#from multiprocessing import Queue as ProcessQueue
 import requests
 from time import time
 
@@ -30,12 +31,24 @@ URLS = [
        ]
 
 #建立队列；在使用多线程时，必须配合其队列一起使用。
+def get_html_text(url):
+    try:
+        r = requests.get(url, headers=HEADER)
+        r.raise_for_status
+        print('Sucessfully!')
+    except:
+        print('Failed!')
+        
+        
 def worker(work_queue):
     while not work_queue.empty():
-        url = work_queue.get()
-        r = requests.get(url, headers=HEADER)
-        #print(r.text[:10])
-        work_queue.task_done()
+       try:
+           url = work_queue.get(block=False)      
+       except Empty():
+           break
+       else:
+           get_html_text(url)
+           work_queue.task_done()
 
 def main():
     work_queue = Queue()
@@ -53,12 +66,12 @@ def main():
     while threads:
     #此处pop方法承担了两个功能，在返回一个线程对象的同时，删除此对象；此方法极有用。
        threads.pop().join()   
+       
  
 #测试脚本
-if __name__ == '__main__':
-   
+if __name__ == '__main__':   
     start = time()
     main()
     end = time()
-    print('线程数：{}个\n总耗时：{:.2f} 秒'.format(thread_pool_size,end-start))  
+    print('线程数：{}个\n总耗时：{:.2f} 秒'.format(THREAD_POOL_SIZE,end-start))  
  
