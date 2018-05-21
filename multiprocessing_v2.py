@@ -36,10 +36,12 @@ def worker(url):
         print('\tSuccess!')
     except Exception as e:
         print('\tFailed!')
+              
 
 def main():     
     with Pool(PROCESS_POOL_SIZE) as pool:
-        pool.map(worker, URLS)    
+        pool.map(worker, URLS)   
+              
  
 #测试脚本
 if __name__ == '__main__':    
