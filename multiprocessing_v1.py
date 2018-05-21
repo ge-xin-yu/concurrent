@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-多进程测试
+多进程测试一
+
+程序本身实现进程池，不使用多进程Pool模块。
 """
 
 import requests
@@ -40,7 +42,8 @@ def main():
     
     for url in URLS:    
         work_queue.put(url)
-        
+    
+    #生成进程池
     processes = [Process(target=worker, args=(work_queue,)) for _ in range(PROCESS_POOL_SIZE)]
     
     for process in processes:
