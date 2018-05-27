@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from time import time
 import aiohttp
 import asyncio
@@ -22,7 +24,7 @@ URLS = [
 
        
 async def get_html_text(url, session):
-    #捕获连接异常，这个异常不能assert无法捕获，原因是连接异常发生在session.get
+    #捕获连接异常，这个异常利用assert无法捕获，原因是连接异常发生在session.get
     #阶段，需使用try捕获。
     try:
         async with session.get(url, headers=HEADER) as r:           
@@ -36,7 +38,7 @@ async def main():
     session = aiohttp.ClientSession()
     #连接时传入session参数。不传也可以，但每个页面请求都需要建立一个session，浪费
     #资源。session本身支持重用，多个连接建议用一个session连接。全部连接任务完成后
-    #同一关闭session。
+    #统一关闭session。
     await asyncio.wait([get_html_text(url, session) for url in URLS])
     await session.close()   
        
